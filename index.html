@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Calculator</h1>
+    </header>
+
+    <div id="container">
+        <nav>
+            <ul class="navigation">
+                <li class="standard">Standard</li>
+                <li class="scientific">Scientific</li>
+                <li class="converter">Converter</li>
+            </ul>
+        </nav>
+
+        <div class="input">
+            <input type="text" class="top-input" data-top>
+            <input type="text" class="input-field" data-buttom maxlength="16">
+        </div>
+
+        <section>
+            <button class="operator-key" data-percentage>&#37;</button>
+            <button class="operator-key" data-squareroot>&#8730;</button>
+            <button class="operator-key" data-square>X&#178;</button>
+            <button class="operator-key" data-one-divide-x>&#8543;x</button>
+            <button class="operator-key" data-clear-secondoperand>CE</button>
+            <button class="operator-key" data-clear-all>C</button>
+            <button class="operator-key" data-backspace>&#10008;</button>
+            <button class="operator-key" data-operation>÷</button>
+            <button class="numeric-keys" data-number>7</button>
+            <button class="numeric-keys" data-number>8</button>
+            <button class="numeric-keys" data-number>9</button>
+            <button class="operator-key" data-operation>×</button>
+            <button class="numeric-keys" data-number>4</button>
+            <button class="numeric-keys" data-number>5</button>
+            <button class="numeric-keys" data-number>6</button>
+            <button class="operator-key" data-operation>-</button>
+            <button class="numeric-keys" data-number>1</button>
+            <button class="numeric-keys" data-number>2</button>
+            <button class="numeric-keys" data-number>3</button>
+            <button class="operator-key" data-operation>+</button>
+            <button class="operator-key" data-positive-negative-operand>&#177;</button>
+            <button class="numeric-keys" data-number>0</button>
+            <button class="numeric-keys" data-number>.</button>
+            <button class="operator-key" data-calculate>&#61;</button>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
