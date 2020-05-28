@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator App</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-
-    <header>
-        <h1>Calculator</h1>
-    </header>
-
-    <div id="container">
-        <nav>
-            <ul class="navigation">
-                <li class="standard">Standard</li>
-                <li class="scientific">Scientific</li>
-                <li class="converter">Converter</li>
-            </ul>
-        </nav>
-
-        <div class="input">
-            <input type="text" class="top-input" data-top>
-            <input type="text" class="input-field" data-buttom maxlength="16">
-        </div>
-
-        <section>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Calculator App</title>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+      <div id="container">
+         <div id="display">
+            <header id="header">
+                <h1 id="header-text">Calculator</h1>
+             </header>
+             <nav>
+                <ul class="navigation">
+                   <li class="nav standard">Standard</li>
+                   <li class="nav scientific">Scientific</li>
+                   <li class="nav converter">Converter</li>
+                </ul>
+             </nav>
+    
+             <div class="input">
+                <input type="text" class="top-input" data-top />
+                <input type="text" class="input-field" data-buttom maxlength="16" />
+             </div>
+         </div>
+         <section>
             <button class="operator-key" data-percentage>&#37;</button>
             <button class="operator-key" data-squareroot>&#8730;</button>
             <button class="operator-key" data-square>X&#178;</button>
@@ -48,14 +47,15 @@
             <button class="numeric-keys" data-number>2</button>
             <button class="numeric-keys" data-number>3</button>
             <button class="operator-key" data-operation>+</button>
-            <button class="operator-key" data-positive-negative-operand>&#177;</button>
+            <button class="numeric-keys" data-positive-negative-operand>
+               &#177;
+            </button>
             <button class="numeric-keys" data-number>0</button>
             <button class="numeric-keys" data-number>.</button>
             <button class="operator-key" data-calculate>&#61;</button>
-        </section>
-    </div>
-    
-    <script src="script.js"></script>
+         </section>
+      </div>
 
-</body>
+      <script src="script.js"></script>
+   </body>
 </html>
