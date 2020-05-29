@@ -75,7 +75,7 @@ operationBtn.forEach((button) => {
       operationSelected = button.textContent;
       if (firstoperand.value !== '') {
          return (firstoperand.value =
-            firstoperand.value.slice(0, firstoperand.value.length - 2) +
+            firstoperand.value.slice(0, -2) +
             `${operationSelected} `);
       }
       // if (calculated) {
@@ -99,6 +99,7 @@ allClear.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
    secondoperand.value = secondoperand.value.toString().slice(0, -1);
+   firstoperand.value = firstoperand.value.toString().slice(0, -1);
 });
 
 calculateBtn.addEventListener('click', SOLVE);
