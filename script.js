@@ -19,10 +19,9 @@ let calculated = false;
 // The solve Function to Handle the Calculation
 const SOLVE = (operator) => {
    if (firstoperand.value == '' || secondoperand.value == '') return;
-   operator = operationSelected;
    let first = parseFloat(firstoperand.value);
    let second = parseFloat(secondoperand.value);
-   switch (operator) {
+   switch (operationSelected) {
       case '+':
          secondoperand.value = first + second;
          break;
@@ -39,7 +38,7 @@ const SOLVE = (operator) => {
          return;
    }
    firstoperand.value = '';
-   calculated = !calculated;
+   calculated = true;
 };
 
 // Adding Event listeners that will fire Events
@@ -56,7 +55,10 @@ numericBtn.forEach((button) => {
       }
       // Adding clicked button values to the secondoperand
       secondoperand.value += button.innerHTML;
-      // Popping out zero as the first number on the secondoperand
+      if (firstoperand.value !== '') {
+         firstoperand.value += `${button.innerHTML}`;
+      }
+      // Popping out multiple zero as the first number on the secondoperand
       if (secondoperand.value.charAt() == '0' && secondoperand.value[1] >= 0) {
          secondoperand.value = secondoperand.value.slice(1);
       }
@@ -65,13 +67,22 @@ numericBtn.forEach((button) => {
 
 operationBtn.forEach((button) => {
    button.addEventListener('click', () => {
-      if (secondoperand.value == '') return;
+      if (secondoperand.value == '' && firstoperand.value == '') return;
       if (firstoperand.value != '' && secondoperand.value != '') {
          operationSelected = operationSelected;
          SOLVE();
       }
       operationSelected = button.textContent;
-      firstoperand.value = secondoperand.value + operationSelected;
+      if (firstoperand.value !== '') {
+         return (firstoperand.value =
+            firstoperand.value.slice(0, firstoperand.value.length - 2) +
+            `${operationSelected} `);
+      }
+      // if (calculated) {
+      //    // calculated= !calculated
+      //    return firstoperand.value += ` ${operationSelected} `;
+      // }
+      firstoperand.value = `${secondoperand.value}  ${operationSelected} `;
       secondoperand.value = '';
    });
 });
@@ -92,26 +103,30 @@ clear.addEventListener('click', () => {
 
 calculateBtn.addEventListener('click', SOLVE);
 
-percentage.addEventListener('click', () =>
+percentage.addEventListener('click', () => {
    secondoperand.value === ''
-      ? secondoperand.value
+      ? ''
       : (secondoperand.value = secondoperand.value / 100)
-);
+      calculated = true;
+});
 
-squareroot.addEventListener('click', () =>
+squareroot.addEventListener('click', () => {
    secondoperand.value === ''
-      ? secondoperand.value
-      : (secondoperand.value = Math.sqrt(secondoperand.value))
-);
+   ? ''
+   : (secondoperand.value = Math.sqrt(secondoperand.value))
+   calculated = true;
+});
 
-square.addEventListener('click', () =>
+square.addEventListener('click', () => {
    secondoperand.value === ''
-      ? secondoperand.value
+      ? ''
       : (secondoperand.value = Math.pow(secondoperand.value, 2))
-);
+      calculated = true;
+});
 
-oneDivideX.addEventListener('click', () =>
+oneDivideX.addEventListener('click', () => {
    secondoperand.value === ''
-      ? secondoperand.value
+      ? ''
       : (secondoperand.value = 1 / secondoperand.value)
-);
+      calculated = true;
+});
