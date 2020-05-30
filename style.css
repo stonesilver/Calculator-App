@@ -91,6 +91,7 @@ input[type='text'] {
    height: 4rem;
    font-size: 3rem;
    font-weight: 600;
+   letter-spacing: 3px;
 }
 
 section {
@@ -137,6 +138,7 @@ button[class*='key'] {
     #container {
         width: 100vw;
         height: 80vh;
+        background: var(--background-color);
      }
      .top-input {
         margin-top: 0.5rem;
@@ -150,5 +152,6 @@ button[class*='key'] {
      }
      button[class*='key'] {
         font-size: 1rem;
+        height: 3rem;
      }
 } 
