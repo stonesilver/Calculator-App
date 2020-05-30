@@ -98,6 +98,7 @@ allClear.addEventListener('click', () => {
 });
 
 clear.addEventListener('click', () => {
+   if(secondoperand.value == '') return
    secondoperand.value = secondoperand.value.toString().slice(0, -1);
    firstoperand.value = firstoperand.value.toString().slice(0, -1);
 });
