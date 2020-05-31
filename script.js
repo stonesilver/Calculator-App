@@ -41,9 +41,10 @@ const SOLVE = () => {
    calculated = true;
 };
 
-// Adding Event listeners that will fire Events
+// Adding Event listeners that will fire button click Events
 numericBtn.forEach((button) => {
    button.addEventListener('click', () => {
+      if (secondoperand.value.replace(/,/g, '').length  === 16) return
       // Checking for duplicate dot(.) in the secondoperand
       if (button.innerHTML == '.' && secondoperand.value.includes('.')) {
          return;
@@ -105,6 +106,7 @@ percentage.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = secondoperand.value / 100);
    calculated = true;
+   firstoperand.value = ''
 });
 
 squareroot.addEventListener('click', () => {
@@ -112,6 +114,7 @@ squareroot.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = Math.sqrt(secondoperand.value));
    calculated = true;
+   firstoperand.value = ''
 });
 
 square.addEventListener('click', () => {
@@ -119,6 +122,7 @@ square.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = Math.pow(secondoperand.value, 2));
    calculated = true;
+   firstoperand.value = ''
 });
 
 oneDivideX.addEventListener('click', () => {
@@ -126,6 +130,7 @@ oneDivideX.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = 1 / secondoperand.value);
    calculated = true;
+   firstoperand.value = ''
 });
 
 window.addEventListener('keydown', (event) => {
@@ -135,6 +140,7 @@ window.addEventListener('keydown', (event) => {
 
    if (numRegex.test(keydown.toString())) {
       (() => {
+         if (secondoperand.value.replace(/,/g, '').length  === 16) return
          // Checking for duplicate dot(.) in the secondoperand
          if (keydown == '.' && secondoperand.value.includes('.')) {
             return;
@@ -145,7 +151,7 @@ window.addEventListener('keydown', (event) => {
             calculated = !calculated;
          }
          // Adding clicked button values to the secondoperand
-         secondoperand.value = parseFloat((secondoperand.value + keydown).replace(/,/g, '')).toLocaleString();
+         secondoperand.value += keydown;
          if (firstoperand.value !== '') {
             firstoperand.value += `${keydown}`;
          }
