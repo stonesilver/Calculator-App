@@ -44,7 +44,7 @@ const SOLVE = () => {
 // Adding Event listeners that will fire button click Events
 numericBtn.forEach((button) => {
    button.addEventListener('click', () => {
-      if (secondoperand.value.replace(/,/g, '').length  === 16) return
+      if (secondoperand.value.replace(/,/g, '').length === 16) return;
       // Checking for duplicate dot(.) in the secondoperand
       if (button.innerHTML == '.' && secondoperand.value.includes('.')) {
          return;
@@ -56,6 +56,9 @@ numericBtn.forEach((button) => {
       }
       // Adding clicked button values to the secondoperand
       secondoperand.value += button.innerHTML;
+      secondoperand.value = parseInt(
+         secondoperand.value.replace(/,/g, '')
+      ).toLocaleString();
       if (firstoperand.value !== '') {
          firstoperand.value += `${button.innerHTML}`;
       }
@@ -95,8 +98,14 @@ allClear.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
    if (secondoperand.value == '') return;
+   if (secondoperand.value.slice(-2).includes(',')) {
+      firstoperand.value = firstoperand.value.toString().slice(0, -1);
+      return (secondoperand.value = secondoperand.value.slice(0, -2));
+   }
    secondoperand.value = secondoperand.value.toString().slice(0, -1);
-   firstoperand.value = firstoperand.value.toString().slice(0, -1);
+   firstoperand.value != ''
+      ? (firstoperand.value = firstoperand.value.toString().slice(0, -1))
+      : '';
 });
 
 calculateBtn.addEventListener('click', SOLVE);
@@ -106,7 +115,7 @@ percentage.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = secondoperand.value / 100);
    calculated = true;
-   firstoperand.value = ''
+   firstoperand.value = '';
 });
 
 squareroot.addEventListener('click', () => {
@@ -114,7 +123,7 @@ squareroot.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = Math.sqrt(secondoperand.value));
    calculated = true;
-   firstoperand.value = ''
+   firstoperand.value = '';
 });
 
 square.addEventListener('click', () => {
@@ -122,7 +131,7 @@ square.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = Math.pow(secondoperand.value, 2));
    calculated = true;
-   firstoperand.value = ''
+   firstoperand.value = '';
 });
 
 oneDivideX.addEventListener('click', () => {
@@ -130,7 +139,7 @@ oneDivideX.addEventListener('click', () => {
       ? ''
       : (secondoperand.value = 1 / secondoperand.value);
    calculated = true;
-   firstoperand.value = ''
+   firstoperand.value = '';
 });
 
 window.addEventListener('keydown', (event) => {
@@ -138,9 +147,9 @@ window.addEventListener('keydown', (event) => {
    const operatorRegex = /^[-+/*]*$/;
    const keydown = event.key;
 
-   if (numRegex.test(keydown.toString())) {
+   if (numRegex.test(keydown)) {
       (() => {
-         if (secondoperand.value.replace(/,/g, '').length  === 16) return
+         if (secondoperand.value.replace(/,/g, '').length === 16) return;
          // Checking for duplicate dot(.) in the secondoperand
          if (keydown == '.' && secondoperand.value.includes('.')) {
             return;
@@ -152,6 +161,10 @@ window.addEventListener('keydown', (event) => {
          }
          // Adding clicked button values to the secondoperand
          secondoperand.value += keydown;
+         secondoperand.value = parseInt(
+            secondoperand.value.replace(/,/g, '')
+         ).toLocaleString();
+         // secondoperand.value.length > 0 ? secondoperand.value = parseInt(secondoperand.value.replace(/,/g, '')).toLocaleString() : ''
          if (firstoperand.value !== '') {
             firstoperand.value += `${keydown}`;
          }
@@ -165,7 +178,7 @@ window.addEventListener('keydown', (event) => {
       })();
    }
 
-   if (operatorRegex.test(keydown.toString())) {
+   if (operatorRegex.test(keydown)) {
       (() => {
          if (secondoperand.value == '' && firstoperand.value == '') return;
          if (firstoperand.value != '' && secondoperand.value != '') {
